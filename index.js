@@ -5,7 +5,7 @@
  * @returns {number} the sum of a and b
  */
 export const sum = (a, b) => {
-  // TODO: implement here
+  return a + b;
 
 }
 
@@ -19,8 +19,14 @@ export const sum = (a, b) => {
  *    callback function to the elements in the original array
  */
 export const map = (arr, callback) => {
-  // TODO: implement here
-
+  
+  let list = [];
+  for(let i = 0; i < arr.length; i++){
+    const result = callback(arr[i], i);
+    list.push(result);
+  }
+  
+  return list;
 }
 
 /**
@@ -32,9 +38,20 @@ export const map = (arr, callback) => {
  *    makes the callback predicate true
  */
 export const filter = (arr, callback) => {
-  // TODO: implement here
+  
+  let list = [];
+  for(let i = 0; i < arr.length; i++){
+    let result = callback(arr[i], i);
+    
+    if(result){
+      list.push(arr[i]);
+    }
 
-}
+    }
+      return list;
+  }
+
+
 
 /**
  * Returns the result of aggregating elements in the array with the given
@@ -52,6 +69,15 @@ export const filter = (arr, callback) => {
  *    in the array
  */
 export const reduce = (arr, callback, initialValue) => {
-  // TODO: implement here
+  
+  let out = initialValue;
+  
+  for(let i = 1; i < arr.length; i++){
+    let result = callback(arr[i - 1], arr[i], i);
+    out += result;
+  }
+
+  return out - arr.length - 1;
+  
 
 }
